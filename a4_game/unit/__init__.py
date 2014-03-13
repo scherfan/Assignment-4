@@ -2,6 +2,7 @@ __all__ = ['base_unit',
            'ground_unit',
            'water_unit',
            'air_unit',
+           'starwars_unit',
            'tank',
            'jeep',
            'superjeep',
@@ -11,5 +12,7 @@ __all__ = ['base_unit',
            'artillery',
            'fighter',
            'anti_air',
-           'bomber']
+           'bomber',
+           'wookiee',
+           'stormtrooper']
 unit_types = {}
