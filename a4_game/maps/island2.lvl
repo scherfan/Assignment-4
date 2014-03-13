@@ -29,7 +29,11 @@ Carrier 1 2 2 180
 Fighter 1 2 3 0
 Bomber 1 3 2 0
 Stormtrooper 1 18 23 90
-Stormtrooper 0 19 23 270
+Stormtrooper 0 19 23 180
+Stormtrooper 1 18 24 270
+Stormtrooper 0 19 24 0
 Wookiee 1 11 22 90
-Wookiee 0 10 22 90
+Wookiee 0 10 22 180
+Wookiee 1 11 23 270
+Wookiee 0 10 23 0
 UNITS END
