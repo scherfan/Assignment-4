@@ -3,11 +3,13 @@ import unit, helper
 from tiles import Tile
 import pygame
 
-class GroundUnit(BaseUnit):
+class InfantryUnit(BaseUnit):
     """
+    Similar to ground_unit class, except no vehicles.
+    
     The basic ground-moving unit.
     
-    - Only collides with other ground units
+    - Only collides with other ground and infantry units
     - Gains bonuses (and debuffs) from tiles.
     """
     def __init__(self, **keywords):
@@ -15,7 +17,7 @@ class GroundUnit(BaseUnit):
         super().__init__(**keywords)
 
         #set unit specific things.
-        self.type = "Ground Unit"
+        self.type = "Infantry Unit"
         
     def is_passable(self, tile, pos):
         """
@@ -27,11 +29,11 @@ class GroundUnit(BaseUnit):
             
         # We can't pass through enemy units.
         u = BaseUnit.get_unit_at_pos(pos)
-        if u and u.team != self.team and isinstance(u, GroundUnit):
+        if u and u.team != self.team and isinstance(u, GroundUnit) and isinstance(u, InfantryUnit):
             return False
         
         #ground units can't travel over water or through walls
-        if (tile.type == 'water' or tile.type == 'wall'):
+        if (tile.type == 'water'):
             return False
 
         return True
