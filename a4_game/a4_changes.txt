@@ -1,9 +1,20 @@
 Changes made to original a4 game
 
+Added new sounds for wookiees and stormtrooper classes:
 https://www.freesound.org/people/soundslikewillem/sounds/190707/ <--
 stormtrooper sound
 https://www.freesound.org/people/MBaer_Studios/sounds/146412/ <--
 wookie sound
-Star_Wars_unit class
-    Star_Wars_unit class will follow the functionality of
-    ground_unit. It will be utilized by Stormtrooper and Wookiee classes
+
+Added two new sprites:
+stormtrooper.png
+wookiee.png
+
+new unit type:
+starwars_unit.py
+
+two new units:
+stormtrooper.py
+wookiee.py
+
+changed __init__.py
