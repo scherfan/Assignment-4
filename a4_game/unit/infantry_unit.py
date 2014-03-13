@@ -10,7 +10,7 @@ class InfantryUnit(BaseUnit):
     The basic ground-moving unit.
     
     - Only collides with other ground and infantry units
-    - Gains bonuses (and debuffs) from tiles.
+    - Gains even more bonuses (and debuffs) from tiles.
     """
     def __init__(self, **keywords):
         #load the base class
@@ -29,10 +29,11 @@ class InfantryUnit(BaseUnit):
             
         # We can't pass through enemy units.
         u = BaseUnit.get_unit_at_pos(pos)
-        if u and u.team != self.team and isinstance(u, GroundUnit) and isinstance(u, InfantryUnit):
+        if (u and u.team != self.team and isinstance(u, GroundUnit) or
+            u and u.team != self.team and isinstance(u, InfantryUnit)):
             return False
         
-        #ground units can't travel over water or through walls
+        #like ground units, infantry can't travel over water, but unlike ground, they can all travel through walls
         if (tile.type == 'water'):
             return False
 

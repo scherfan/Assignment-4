@@ -27,7 +27,8 @@ class GroundUnit(BaseUnit):
             
         # We can't pass through enemy units.
         u = BaseUnit.get_unit_at_pos(pos)
-        if u and u.team != self.team and isinstance(u, GroundUnit):
+        if (u and u.team != self.team and isinstance(u, GroundUnit) or
+            u and u.team != self.team and isinstance(u, InfantryUnit))::
             return False
         
         #ground units can't travel over water or through walls
