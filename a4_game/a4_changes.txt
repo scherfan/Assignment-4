@@ -1,1 +1,5 @@
 Changes made to original a4 game
+
+Star_Wars_unit class
+    Star_Wars_unit class will follow the functionality of
+    ground_unit. It will be utilized by Stormtrooper and Wookiee classes
