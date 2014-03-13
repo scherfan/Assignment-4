@@ -17,7 +17,7 @@ class StarWarsUnit(BaseUnit):
         super().__init__(**keywords)
 
         #set unit specific things.
-        self.type = "Infantry Unit"
+        self.type = "StarWars Unit"
         
     def is_passable(self, tile, pos):
         """
