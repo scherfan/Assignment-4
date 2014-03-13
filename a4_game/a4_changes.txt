@@ -4,3 +4,6 @@ https://www.freesound.org/people/soundslikewillem/sounds/190707/ <--
 stormtrooper sound
 https://www.freesound.org/people/MBaer_Studios/sounds/146412/ <--
 wookie sound
+Star_Wars_unit class
+    Star_Wars_unit class will follow the functionality of
+    ground_unit. It will be utilized by Stormtrooper and Wookiee classes

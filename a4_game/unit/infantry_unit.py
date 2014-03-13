@@ -3,7 +3,7 @@ import unit, helper
 from tiles import Tile
 import pygame
 
-class InfantryUnit(BaseUnit):
+class StarWarsUnit(BaseUnit):
     """
     Similar to ground_unit class, except no vehicles.
     
@@ -30,10 +30,10 @@ class InfantryUnit(BaseUnit):
         # We can't pass through enemy units.
         u = BaseUnit.get_unit_at_pos(pos)
         if (u and u.team != self.team and isinstance(u, GroundUnit) or
-            u and u.team != self.team and isinstance(u, InfantryUnit)):
+            u and u.team != self.team and isinstance(u, StarWarsUnit)):
             return False
         
-        #like ground units, infantry can't travel over water, but unlike ground, they can all travel through walls
+        #for right now, our units are only ground themed, so water is impassable
         if (tile.type == 'water'):
             return False
 
