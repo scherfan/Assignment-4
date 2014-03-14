@@ -18,7 +18,21 @@ class StarWarsUnit(BaseUnit):
 
         #set unit specific things.
         self.type = "StarWars Unit"
+        self.day = 0
+        self.new_turn = True
         
+    def turn_ended(self):
+        """
+        Called when the turn is ended. Runs the aircraft out of fuel, or refuels
+        if there's a carrier nearby.
+        """
+        super().turn_ended()
+        
+        self.day += 1
+        self.new_turn = True
+            
+        return True
+    
     def is_passable(self, tile, pos):
         """
         Returns whether or not this unit can move over a certain tile.

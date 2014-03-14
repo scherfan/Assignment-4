@@ -1,0 +1,31 @@
+Teams: 1
+Tiles: assets/tiles.png
+Tile size: 20x20
+Map: maps/Crossroads.gif
+
+UNITS START
+Battleship 0 0 0 270
+Bomber 0 4 4 270
+Carrier 0 5 4 270
+Fighter 0 6 4 270
+Anti-Armour 0 3 13 0
+Anti-Air 0 3 14 0
+Artillery 0 5 14 0
+Jeep 0 5 12 0
+SuperJeep 0 7 12 0
+Tank 0 9 0 270
+Stormtrooper 0 10 0 270
+Wookiee 0 11 0 270
+Battleship 1 0 2 270
+Bomber 1 24 25 90
+Carrier 1 25 25 90
+Fighter 1 26 25 90
+Anti-Armour 1 4 2 270
+Anti-Air 1 5 2 270
+Artillery 1 6 2 270
+Jeep 1 7 2 270
+SuperJeep 1 8 2 270
+Tank 1 9 2 270
+Stormtrooper 1 10 2 270
+Wookiee 1 11 2 270
+UNITS END

@@ -1,0 +1,31 @@
+Teams: 1
+Tiles: assets/tiles.png
+Tile size: 20x20
+Map: maps/demo2.gif
+
+UNITS START
+Battleship 0 0 0 270
+Bomber 0 1 0 270
+Carrier 0 2 0 270
+Fighter 0 3 0 270
+Anti-Armour 0 4 0 270
+Anti-Air 0 5 0 270
+Artillery 0 6 0 270
+Jeep 0 7 0 270
+SuperJeep 0 8 0 270
+Tank 0 9 0 270
+Stormtrooper 0 10 0 270
+Wookiee 0 11 0 270
+Battleship 1 0 2 270
+Bomber 1 1 2 270
+Carrier 1 2 2 270
+Fighter 1 3 2 270
+Anti-Armour 1 4 2 270
+Anti-Air 1 5 2 270
+Artillery 1 6 2 270
+Jeep 1 7 2 270
+SuperJeep 1 8 2 270
+Tank 1 9 2 270
+Stormtrooper 1 10 2 270
+Wookiee 1 11 2 270
+UNITS END
