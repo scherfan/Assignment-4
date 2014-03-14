@@ -18,3 +18,5 @@ stormtrooper.py
 wookiee.py
 
 changed __init__.py
+
+Implemented destroy_prob()
