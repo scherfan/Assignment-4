@@ -415,7 +415,11 @@ class GUI(LayeredUpdates):
 
     def begin_turn(self):
         for u in base_unit.BaseUnit.active_units:
-                u.begin_round()
+            
+            ttype = tile_data(self.tile_pos)
+            print(ttype)
+            
+            u.begin_round()
         self.change_mode(Modes.Select)
             
     def on_click(self, e):
@@ -599,7 +603,6 @@ class GUI(LayeredUpdates):
         
         # Update units
         base_unit.BaseUnit.active_units.update()
-        
         
         if self.mode == Modes.Begin:
             self.begin_turn()

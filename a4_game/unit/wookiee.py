@@ -1,7 +1,6 @@
 #wookiee class
 from unit.starwars_unit import StarWarsUnit
 import unit, helper, effects
-from tiles import Tile
 import pygame
 
 class Wookiee(StarWarsUnit):
@@ -60,12 +59,11 @@ class Wookiee(StarWarsUnit):
         # Not an air unit, return true
         return True
 
-    def begin_round(self):
+    def begin_round(self, tile):
         """
         Meant to be completely over-ridden
         """
-        #if Tile.tile_data((0, 0)) == tile_types[0]:
-            #print("FOREST HERE")
+        
     
     def get_damage(self, target, target_tile):
         if Tile.type == 'forest':
