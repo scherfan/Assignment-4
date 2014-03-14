@@ -20,7 +20,9 @@ wookiee.py
 changed __init__.py
 
 
-gui.py lines 858-861; 502
+gui.py lines 868-871; 507; stormtrooper
+265; 62; 605/6; 204 Begin
 
+base_unit 267
 Implemented destroy_prob()
 

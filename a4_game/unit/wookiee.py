@@ -59,8 +59,17 @@ class Wookiee(StarWarsUnit):
             
         # Not an air unit, return true
         return True
-        
+
+    def begin_round(self):
+        """
+        Meant to be completely over-ridden
+        """
+        #if Tile.tile_data((0, 0)) == tile_types[0]:
+            #print("FOREST HERE")
+    
     def get_damage(self, target, target_tile):
+        if Tile.type == 'forest':
+            print("FOREST")
         """
         Returns the potential attack damage against a given enemy.
         
