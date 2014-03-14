@@ -61,6 +61,8 @@ class Wookiee(StarWarsUnit):
         return True
         
     def get_damage(self, target, target_tile):
+        if Tile.type == 'forest':
+            print("FOREST")
         """
         Returns the potential attack damage against a given enemy.
         

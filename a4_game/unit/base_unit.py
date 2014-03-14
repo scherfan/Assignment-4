@@ -264,6 +264,12 @@ class BaseUnit(Sprite):
                 self.tile_x += dx
                 self.tile_y += dy
 
+    def begin_round(self):
+        """
+        Meant to be completely over-ridden
+        """
+        pass
+                
     def set_path(self, path):
         """
         Tells the unit that it should be moving, where, and how.
