@@ -19,4 +19,8 @@ wookiee.py
 
 changed __init__.py
 
+
 gui.py lines 858-861; 502
+
+Implemented destroy_prob()
+
