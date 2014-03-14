@@ -498,8 +498,9 @@ class GUI(LayeredUpdates):
         
         # Calculate the damage
         damage = self.sel_unit.get_damage(atk_unit, atk_tile)
-        
-        damage += random.choice([-1, -1, 0, 0, 0, 0, 0, 1, 1, 2])
+
+        if self.sel_unit.type != "Stormtrooper":
+            damage += random.choice([-1, -1, 0, 0, 0, 0, 0, 1, 1, 2])
 
         damage = max(damage, 0)
 
@@ -855,8 +856,13 @@ class GUI(LayeredUpdates):
                     pot_dmg = self.sel_unit.get_damage(hov_unit, tile)
 
                     FONT.set_bold(True)
+                    if self.sel_unit.type == "Stormtrooper":
+                        show_dmg = self.sel_unit.damage
+                    else:
+                        show_dmg = pot_dmg
+
                     self.draw_bar_text("Damage Range: {}-{}".format(
-                            max(pot_dmg-1,0),pot_dmg+2), line_num)
+                            max(show_dmg-1,0),show_dmg+2), line_num)
                     line_num += 1
                     FONT.set_bold(False)
 
