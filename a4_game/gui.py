@@ -414,8 +414,16 @@ class GUI(LayeredUpdates):
                 raise Exception ("Expected end of unit definitions")
 
     def begin_turn(self):
+        """
+        Iterates through every active unit and collects tile type
+        of every unit at the start of each turn. Sends out the tile type
+        for the purposes of giving a bonus to wookiees in the forest.
+        """
         for u in base_unit.BaseUnit.active_units:
-            u.begin_round()
+            unit_pos = (u.tile_x, u.tile_y)
+            unit_tile = self.map.tile_data(unit_pos)[0]
+            u.begin_round(unit_tile)
+
         self.change_mode(Modes.Select)
             
     def on_click(self, e):
@@ -599,7 +607,6 @@ class GUI(LayeredUpdates):
         
         # Update units
         base_unit.BaseUnit.active_units.update()
-        
         
         if self.mode == Modes.Begin:
             self.begin_turn()

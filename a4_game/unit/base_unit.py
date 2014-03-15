@@ -264,7 +264,7 @@ class BaseUnit(Sprite):
                 self.tile_x += dx
                 self.tile_y += dy
 
-    def begin_round(self):
+    def begin_round(self, tile):
         """
         Meant to be completely over-ridden
         """
