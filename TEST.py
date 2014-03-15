@@ -24,10 +24,14 @@ def prob(damage, health, turn):
         total_prob += percent * prob(damage, health - (damage + modifier), turn-1)
 
     return total_prob
-"""
+
 print(prob(5, 12, 2))
 print(prob(3, 12, 3))
 
 print(prob(1, 100, 10))
 print(prob(2, 100, 30))
-"""
+
+
+for i in range(0, 30):
+    print(prob(1, 25000, 300+i*70))
+
