@@ -18,7 +18,7 @@ stormtrooper.py
 wookiee.py
 
 changed __init__.py
-
+lines 5, 16, 17
 
 gui.py lines 868-871; 507; stormtrooper
 265; 62; 605/7; 204 Begin
