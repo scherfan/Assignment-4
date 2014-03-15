@@ -415,7 +415,7 @@ class GUI(LayeredUpdates):
 
     def begin_turn(self):
         for u in base_unit.BaseUnit.active_units:
-                u.begin_round()
+            u.begin_round()
         self.change_mode(Modes.Select)
             
     def on_click(self, e):
