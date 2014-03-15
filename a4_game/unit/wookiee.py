@@ -41,7 +41,6 @@ class Wookiee(StarWarsUnit):
         self.bonus_damage = 4
         self.defense = 0
         self.hit_effect = effects.Explosion
-        
         self._move_costs = {'mountain': 2,
                              'forest': 1.5,
                              'sand': 1.5}
@@ -61,13 +60,23 @@ class Wookiee(StarWarsUnit):
 
     def begin_round(self, tile):
         """
-        Meant to be completely over-ridden
+        Gives Wookiees a boost of attack range and bonus
+        damage when ever in the forest, once it leaves it goes back to
+        stock values.
+        Takes tile type from gui.py as a parameter.
+        Even though the code said +1 to attack range, for some reason
+        it goes 3 -> 5 -> 7 -> 8 -> 9. Bonus damage is capped at 10.
         """
-        
+        if tile == 'forest' and self.bonus_damage < 10:
+            self.bonus_damage += 1
+            self.max_atk_range += 1
+        elif tile != 'forest':
+            self.bonus_damage = 4
+            self.max_atk_range = 3
+    
+            
     
     def get_damage(self, target, target_tile):
-        if Tile.type == 'forest':
-            print("FOREST")
         """
         Returns the potential attack damage against a given enemy.
         

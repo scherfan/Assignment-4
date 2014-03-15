@@ -21,7 +21,9 @@ changed __init__.py
 
 
 gui.py lines 868-871; 507; stormtrooper
-265; 62; 605/6; 204 Begin
+265; 62; 605/7; 204 Begin
+
+wookiee.py overwrote begin_round
 
 base_unit 267
 Implemented destroy_prob()
