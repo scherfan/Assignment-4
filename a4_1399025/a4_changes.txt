@@ -1,0 +1,63 @@
+Assignment 4: Tactics modifications 
+Jesse Emery
+ID#: 1399025
+Partner's Name: Steven Cherfan
+Section B2
+Date: 17/03/14
+
+This serves as our readme, as everything is explained in the new files
+and lines mentioned below.
+
+
+Changes made to original Tactics game:
+
+Added new sounds for wookiees and stormtrooper classes:
+https://www.freesound.org/people/soundslikewillem/sounds/190707/
+stormtrooper sound
+
+https://www.freesound.org/people/Syna-Max/sounds/64940/
+wilhelm scream
+
+https://www.freesound.org/people/MBaer_Studios/sounds/146412/
+wookie sound
+
+
+Added two new sprites:
+stormtrooper.png
+wookiee.png
+
+new unit type:
+starwars_unit.py
+
+two new units:
+stormtrooper.py
+wookiee.py
+
+new laser animation:
+laser.png in assets/
+laser.py in effects/
+
+
+To base_unit.py, the following changes were made:
+
+line 45: 'self.day' keeps track of the number of days outside of gui
+
+line 55: 'phony damage' is added and set to false by default. This was
+introduced here rather than in starwars_unit.py so that any unit can
+hide their 'actual' damage if need be without giving anything
+away. Also used in analyze.py so the player is never really sure if a
+stormtrooper will miss.
+
+lines 270-285: 'begin_round()' method is introduced for use in gui.py
+whenever the new 'Begin' mode is selected.
+
+
+To gui.py, the following changes were made:
+
+On lines 63, 205, 266, 417-431, 614-615,
+there were changes and additions to accomodate for a new 'Begin' mode,
+which is changed to at the very end of every round before switching
+back to 'Select'. It's purpose is to be a once-per-round call that
+accomodates methods of our new units well.
+
+line 877: addition for use of the new method 'fake_damage'
