@@ -6,6 +6,7 @@ stormtrooper sound
 https://www.freesound.org/people/MBaer_Studios/sounds/146412/ <--
 wookie sound
 
+https://www.freesound.org/people/Syna-Max/sounds/64940/
 Added two new sprites:
 stormtrooper.png
 wookiee.png

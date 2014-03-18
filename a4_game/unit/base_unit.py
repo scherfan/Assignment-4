@@ -41,6 +41,8 @@ class BaseUnit(Sprite):
         self._active = False
         self._path = []
         self.turn_state = [False, False]
+
+        self.day = 0 # added to easily keep track of the number of days that've gone by.
         
         #Default unit stats
         self.health = 15
@@ -50,6 +52,7 @@ class BaseUnit(Sprite):
         self.damage = 1
         self.defense = 3
         self.type = "Base Unit"
+        self.phony_damage = False
         self.hit_effect = None
         self.die_effect = effects.Explosion
         self.move_sound = None
@@ -266,8 +269,20 @@ class BaseUnit(Sprite):
 
     def begin_round(self, tile):
         """
+        A method called at the beginning of every round,
+        where unit specific things can be updated.
+        Right now, it's only purposw is to keep track of
+        the days outside of the gui.py.
+
+        The way begin_round() is called in the gui, it
+        will be called over all of the units on only
+        the active team's side at the beginning of a
+        round, so really it is called on every unit
+        once a day.
+        
         Meant to be completely over-ridden
         """
+        self.day += 1
         pass
                 
     def set_path(self, path):

@@ -199,6 +199,7 @@ class GUI(LayeredUpdates):
                 # If not, switch to that unit
                 self.sel_unit = unit
                 return
+
         
         # reset game mode
         self.change_mode(Modes.Begin)
@@ -420,9 +421,10 @@ class GUI(LayeredUpdates):
         for the purposes of giving a bonus to wookiees in the forest.
         """
         for u in base_unit.BaseUnit.active_units:
-            unit_pos = (u.tile_x, u.tile_y)
-            unit_tile = self.map.tile_data(unit_pos)[0]
-            u.begin_round(unit_tile)
+            if u.team == self.cur_team:
+                unit_pos = (u.tile_x, u.tile_y)
+                unit_tile = self.map.tile_data(unit_pos)[0]
+                u.begin_round(unit_tile)
 
         self.change_mode(Modes.Select)
             
@@ -512,8 +514,7 @@ class GUI(LayeredUpdates):
         # Calculate the damage
         damage = self.sel_unit.get_damage(atk_unit, atk_tile)
 
-        if self.sel_unit.type != "Stormtrooper":
-            damage += random.choice([-1, -1, 0, 0, 0, 0, 0, 1, 1, 2])
+        damage += random.choice([-1, -1, 0, 0, 0, 0, 0, 1, 1, 2])
 
         damage = max(damage, 0)
 
@@ -868,22 +869,21 @@ class GUI(LayeredUpdates):
 
                 
                 if self.sel_unit.can_hit(hov_unit):
-                    #how much damage can we do?
-                    pot_dmg = self.sel_unit.get_damage(hov_unit, tile)
-
                     FONT.set_bold(True)
-                    if self.sel_unit.type == "Stormtrooper":
-                        show_dmg = self.sel_unit.damage
+                    
+                    #how much damage can we do?
+                    if self.sel_unit.phony_damage == True:
+                        pot_dmg = self.sel_unit.get_false_damage(hov_unit, tile)
                     else:
-                        show_dmg = pot_dmg
+                        pot_dmg = self.sel_unit.get_damage(hov_unit, tile)
 
                     self.draw_bar_text("Damage Range: {}-{}".format(
-                            max(show_dmg-1,0),show_dmg+2), line_num)
+                            max(pot_dmg-1,0),pot_dmg+2), line_num)
                     line_num += 1
                     FONT.set_bold(False)
 
                     #analyze the probability of destroying hov_unit
-                    #using up to 30 attackes
+                    #using up to 30 attacks
                     probs = analyze.destroy_prob(self.sel_unit, hov_unit,
                                                  tile, 30)
 

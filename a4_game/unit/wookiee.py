@@ -5,18 +5,19 @@ import pygame
 
 class Wookiee(StarWarsUnit):
     """
-    An infantry unit armed with an anti-armour missile launcher. Very 
-    effective against tanks and battleships, but otherwise not especially
-    powerful.
+    A classic wookiee from the Star Wars universe.
+    This unit is equipped with a crossbow, and generally does little
+    damage. However, the longer they spend in the forests, they recieve 
+    more range and damge. Effective against other star wars units aligned
+    with the Galactic Emipre (just the stormtroopers for now).
     
-    Armour: None
+    Armour: Low
     Speed: Low
     Range: Medium
-    Damage: Medium (High against armoured vehicles)
+    Damage: Low (High against stormtroopers, increases in forests)
     
     Other notes:
-    - Slightly slowed by forests and sand.
-    - Slowed somewhat more by mountains.
+    - Slightly slowed by mountains and sand.
     - Can move through any land terrain.
     - Can't hit air units.
     """
@@ -31,25 +32,26 @@ class Wookiee(StarWarsUnit):
         
         #sounds
         self.move_sound = "FeetMove"
-        self.hit_sound = "Wookiee"
+        self.hit_sound = "Wookiee" 
+        self.die_sound = "Wookiee"
 
         #set unit specific things.
+        self.alliance = "Rebel_Alliance"
         self.type = "Wookiee"
         self.speed = 4
         self.max_atk_range = 3
-        self.damage = 4
+        self.damage = 3
         self.bonus_damage = 4
-        self.defense = 0
-        self.hit_effect = effects.Explosion
-        self._move_costs = {'mountain': 2,
-                             'forest': 1.5,
+        self.defense = 1
+        self.hit_effect = effects.Ricochet
+        self._move_costs = {'mountain': 1.5,
                              'sand': 1.5}
                              
     def can_hit(self, target_unit):
         """
         Determines whether a unit can hit another unit.
         
-        Overrides because anti-armour can't hit planes.
+        Overrides because wookiees can't hit planes.
         """
         # If it's an air unit return false
         if isinstance(target_unit, unit.air_unit.AirUnit):
@@ -60,31 +62,34 @@ class Wookiee(StarWarsUnit):
 
     def begin_round(self, tile):
         """
-        Gives Wookiees a boost of attack range and bonus
-        damage when ever in the forest, once it leaves it goes back to
-        stock values.
-        Takes tile type from gui.py as a parameter.
-        Even though the code said +1 to attack range, for some reason
-        it goes 3 -> 5 -> 7 -> 8 -> 9. Bonus damage is capped at 10.
+        Gives Wookiees a boost of attack range and damage when it begins
+        a round in the forest. Once it leaves, the values go back to
+        stock values. Takes tile type from gui.py as a parameter.
+        
+        Damage is capped at 8, and range is capped at 5.
         """
-        if tile == 'forest' and self.bonus_damage < 10:
-            self.bonus_damage += 1
-            self.max_atk_range += 1
+        if tile == 'forest':
+            if self.damage < 8:
+                self.damage += 1
+            if self.max_atk_range < 5:
+                self.max_atk_range += 1
         elif tile != 'forest':
-            self.bonus_damage = 4
+            self.damage = 4
             self.max_atk_range = 3
-    
             
+        super().begin_round(tile)
     
     def get_damage(self, target, target_tile):
         """
         Returns the potential attack damage against a given enemy.
         
         This overrides the super class function for special damage
-        and because anti-armour can't hit air units.
-        """        
-        # Do bonus damage to armored vehicles
-        if target.type == "Tank" or target.type == "Battleship":
+        against Galactic Empire units.
+        """
+        
+        # Only proceed if it's a Star_Wars unit type, because non-SW
+        # units don't have 'self.alliance' pre-defined
+        if isinstance(target, unit.starwars_unit.StarWarsUnit) and target.alliance == "Galactic_Empire":
             # Calculate the total damage
             damage = self.damage + self.bonus_damage
             

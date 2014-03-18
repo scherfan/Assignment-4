@@ -5,33 +5,25 @@ import pygame
 
 class StarWarsUnit(BaseUnit):
     """
-    Similar to ground_unit class, except no vehicles.
+    This is our new unit type, based off of Star Wars
+    characters.
+
+    This was based off of the 'ground unit' class,
+    but modified a bit.
     
-    The basic ground-moving unit.
-    
-    - Only collides with other ground and infantry units
-    - Gains even more bonuses (and debuffs) from tiles.
+    For instance, we've introduced an 'alliance'
+    that certain Star Wars units can use to their
+    advantage. Even though there's only 2 sub-units
+    at the moment, this allows for easy integration
+    of more units in the future.
     """
     def __init__(self, **keywords):
         #load the base class
         super().__init__(**keywords)
 
         #set unit specific things.
-        self.type = "StarWars Unit"
-        self.day = 0
-        self.new_turn = True
-        
-    def turn_ended(self):
-        """
-        Called when the turn is ended. Runs the aircraft out of fuel, or refuels
-        if there's a carrier nearby.
-        """
-        super().turn_ended()
-        
-        self.day += 1
-        self.new_turn = True
-            
-        return True
+        self.alliance = "Unaligned"
+        self.type = "StarWarsUnit"
     
     def is_passable(self, tile, pos):
         """
@@ -44,7 +36,6 @@ class StarWarsUnit(BaseUnit):
         # We can't pass through enemy units.
         u = BaseUnit.get_unit_at_pos(pos)
         if (u and u.team != self.team and isinstance(u, StarWarsUnit)):
-           #or u and u.team != self.team and isinstance(u, StarWarsUnit)):
             return False
         
         #for right now, our units are only ground themed, so water is impassable
